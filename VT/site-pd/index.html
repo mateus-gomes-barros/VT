@@ -11,10 +11,38 @@
     
   
       <div class="video-wrapper" style="margin: auto; width:auto;">
-        
-          <div style="padding:56.25% 0 0 0;position:relative;"><iframe frameborder="0" allowfullscreen src="https://scripts.converteai.net/4730a2b3-52b1-4519-a557-5873668db14b/players/64712d9674656e0009281e1a/embed.html" id="ifr_64712d9674656e0009281e1a" style="position:absolute;top:0;left:0;width:100%;height:100%;" referrerpolicy="origin"></iframe></div>
-        </div>
+      <div id="vid_65abc560462e65000939a120" style="position:relative;width:100%;padding: 56.25% 0 0;"><img id="thumb_65abc560462e65000939a120" src="https://images.converteai.net/731b1a17-a0f6-4521-b6f8-c62453dc0b90/players/65abc560462e65000939a120/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"><div id="backdrop_65abc560462e65000939a120" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div></div><script type="text/javascript" id="scr_65abc560462e65000939a120">var s=document.createElement("script");s.src="https://scripts.converteai.net/731b1a17-a0f6-4521-b6f8-c62453dc0b90/players/65abc560462e65000939a120/player.js",s.async=!0,document.head.appendChild(s);</script>  
+      </div>
+<div class="botao">
+<a class="button1 smartplayer-click-event" href="url_aqui" title="Quero fazer 6 Dígitos sem Anúncios" target="_blank">
 
+    <label style="font-size: 20px;">Começar Teste de 30 Dias Agora</label>
+   
+</a>
+</div>
+<script>
+      window.onload = function () {
+        const allLinks = document.querySelectorAll('a');
+    
+        allLinks.forEach((link) => {
+          // Obtém o valor do atributo 'href' do link
+          const originalHref = link.getAttribute('href');
+    
+          // Verifica se há parâmetros na URL
+          if (originalHref.includes('%5B') || originalHref.includes('%5D')) {
+            // Decodifica o valor do atributo 'href' apenas se necessário
+            const decodedHref = decodeURIComponent(originalHref);
+    
+            // Atualiza o atributo 'href' com a URL decodificada
+            link.setAttribute('href', decodedHref);
+          }
+    
+          // Define os atributos 'target' e 'rel'
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener');
+        });
+      };
+    </script>
 
     
  
