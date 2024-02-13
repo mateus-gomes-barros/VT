@@ -48,17 +48,19 @@
                 embedScript.async = true;
                 document.getElementById("video-container").appendChild(embedScript);
 
-                // Adicionar parâmetros aos botões CTA para vídeos A e B
+                // Adicionar parâmetros aos botões CTA para todos os vídeos
                 var queryString = window.location.search.replace("utm_source=FB", "");
                 var param;
                 if (selectedVideoId === "65cbabef67f1f60008a496a0") { // Se o vídeo selecionado for o Vídeo A
                     param = "vslA";
                 } else if (selectedVideoId === "65cbac012b58ec000879b445") { // Se o vídeo selecionado for o Vídeo B
                     param = "vslB";
+                } else { // Se for qualquer outro vídeo (Vídeo C)
+                    param = "vslC";
                 }
                 if (param) {
                     queryString += "&utm_source=" + param;
-                    var buttonLinks = document.querySelectorAll("a.elementor-button-link.elementor-button.elementor-size-sm");
+                    var buttonLinks = document.querySelectorAll(".button1");
                     buttonLinks.forEach((buttonLink) => {
                         if (!buttonLink.href.includes(param)) {
                             buttonLink.href += queryString;
