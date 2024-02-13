@@ -27,39 +27,29 @@
 
         function loadNextVideo() {
             var selectedVideoId = videoIds[currentVideoIndex];
-            var embedScript = document.createElement("script");
-            embedScript.type = "text/javascript";
-            embedScript.id = "scr_" + selectedVideoId;
-            embedScript.src = "https://scripts.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/" + selectedVideoId + "/player.js";
-            embedScript.async = true;
-            document.getElementById("video-container").appendChild(embedScript);
-            console.log("Vídeo selecionado:", selectedVideoId);
 
-            var queryString = window.location.search.replace("utm_source=FB", "");
-            var param;
+            if (selectedVideoId === "ID_do_video_C") {
+                var container = document.getElementById("video-container");
+                container.innerHTML = '<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/35ff6r4eoc?seo=true&videoFoam=true" title="Seqüência 01 Video" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" msallowfullscreen width="100%" height="100%"></iframe></div></div>';
 
-            setTimeout(function() {
-                const buttonLinks = document.querySelectorAll(".button1");
-                console.log("Número de botões CTA encontrados:", buttonLinks.length);
+                var queryString = window.location.search.replace("utm_source=FB", "") + "&utm_source=vslC";
+                var buttonLinks = document.querySelectorAll("a.elementor-button-link.elementor-button.elementor-size-sm");
                 buttonLinks.forEach((buttonLink) => {
-                    console.log("Href atual do botão CTA:", buttonLink.href);
                     if (!buttonLink.href.includes("vslA") && !buttonLink.href.includes("vslB") && !buttonLink.href.includes("vslC")) {
-                        if (selectedVideoId === "65cbabef67f1f60008a496a0") { // Se o vídeo selecionado for o Vídeo A
-                            param = "vslA";
-                        } else if (selectedVideoId === "65cbac012b58ec000879b445") { // Se o vídeo selecionado for o Vídeo B
-                            param = "vslB";
-                        } else if (selectedVideoId === "ID_do_video_C") { // Se o vídeo selecionado for o Vídeo C
-                            param = "vslC";
-                        }
-                        if (param) {
-                            queryString += "&utm_source=" + param;
-                        }
                         buttonLink.href += queryString;
                         console.log("Href do botão CTA após adicionar os parâmetros:", buttonLink.href);
                     }
                 });
-            }, 1000); // Espera 1 segundo para garantir que os botões estejam carregados
+            } else {
+                var embedScript = document.createElement("script");
+                embedScript.type = "text/javascript";
+                embedScript.id = "scr_" + selectedVideoId;
+                embedScript.src = "https://scripts.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/" + selectedVideoId + "/player.js";
+                embedScript.async = true;
+                document.getElementById("video-container").appendChild(embedScript);
+            }
 
+            console.log("Vídeo selecionado:", selectedVideoId);
             currentVideoIndex = (currentVideoIndex + 1) % totalVideos; // Move para o próximo vídeo
         }
 
