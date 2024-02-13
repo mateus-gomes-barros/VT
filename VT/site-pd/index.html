@@ -27,10 +27,8 @@
 
         function loadNextVideo() {
             var selectedVideoId = videoIds[currentVideoIndex];
-            var videoName;
 
             if (selectedVideoId === "ID_do_video_C") {
-                videoName = "vídeo C";
                 var container = document.getElementById("video-container");
                 container.innerHTML = '<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/35ff6r4eoc?seo=true&videoFoam=true" title="Seqüência 01 Video" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" msallowfullscreen width="100%" height="100%"></iframe></div></div>';
 
@@ -43,11 +41,6 @@
                     }
                 });
             } else {
-                if (selectedVideoId === "65cbabef67f1f60008a496a0") {
-                    videoName = "vídeo A";
-                } else if (selectedVideoId === "65cbac012b58ec000879b445") {
-                    videoName = "vídeo B";
-                }
                 var embedScript = document.createElement("script");
                 embedScript.type = "text/javascript";
                 embedScript.id = "scr_" + selectedVideoId;
@@ -75,7 +68,6 @@
                 }
             }
 
-            console.log("O vídeo que está rodando é o", videoName);
             console.log("Vídeo selecionado:", selectedVideoId);
             currentVideoIndex = (currentVideoIndex + 1) % totalVideos; // Move para o próximo vídeo
         }
@@ -83,6 +75,7 @@
         loadNextVideo(); // Carrega o primeiro vídeo ao carregar a página
     });
 </script>
+
 
 
 
