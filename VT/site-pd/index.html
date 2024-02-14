@@ -11,72 +11,140 @@
     
   
       <div class="video-wrapper" style="margin: auto; width:auto;">
-<div style="width: min(40rem, 100%); margin: auto;">
-		<div id="video-container"></div>
-
-<script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function() {
-        var videoIds = [
-            "65cbabef67f1f60008a496a0", // Vídeo A
-            "65cbac012b58ec000879b445", // Vídeo B
-            "ID_do_video_C" // Vídeo C (substitua pelo ID correto)
-        ];
-
-        var totalVideos = videoIds.length;
-        var currentVideoIndex = Math.floor(Math.random() * totalVideos); // Seleciona um vídeo aleatório para começar
-
-        function loadNextVideo() {
-            var selectedVideoId = videoIds[currentVideoIndex];
-
-            if (selectedVideoId === "ID_do_video_C") {
-                var container = document.getElementById("video-container");
-                container.innerHTML = '<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/35ff6r4eoc?seo=true&videoFoam=true" title="Seqüência 01 Video" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" msallowfullscreen width="100%" height="100%"></iframe></div></div>';
-
-                var queryString = window.location.search.replace("utm_source=FB", "") + "&utm_source=vslC";
-                var buttonLinks = document.querySelectorAll(".button1");
-                buttonLinks.forEach((buttonLink) => {
-                    if (!buttonLink.href.includes("vslA") && !buttonLink.href.includes("vslB") && !buttonLink.href.includes("vslC")) {
-                        buttonLink.href += queryString;
-                        console.log("Href do botão CTA após adicionar os parâmetros:", buttonLink.href);
-                    }
-                });
-            } else {
-                var embedScript = document.createElement("script");
-                embedScript.type = "text/javascript";
-                embedScript.id = "scr_" + selectedVideoId;
-                embedScript.src = "https://scripts.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/" + selectedVideoId + "/player.js";
-                embedScript.async = true;
-                document.getElementById("video-container").appendChild(embedScript);
-
-                // Adicionar parâmetros aos botões CTA para todos os vídeos
-                var queryString = window.location.search.replace("utm_source=FB", "");
-                var param;
-                if (selectedVideoId === "65cbabef67f1f60008a496a0") { // Se o vídeo selecionado for o Vídeo A
-                    param = "vslA";
-                } else if (selectedVideoId === "65cbac012b58ec000879b445") { // Se o vídeo selecionado for o Vídeo B
-                    param = "vslB";
-                } else { // Se for qualquer outro vídeo (Vídeo C)
-                    param = "vslC";
-                }
-                if (param) {
-                    queryString += "&utm_source=" + param;
-                    var buttonLinks = document.querySelectorAll(".button1");
-                    buttonLinks.forEach((buttonLink) => {
-                        if (!buttonLink.href.includes(param)) {
-                            buttonLink.href += queryString;
-                            console.log("Href do botão CTA após adicionar os parâmetros:", buttonLink.href);
-                        }
-                    });
-                }
-            }
-
-            console.log("Vídeo selecionado:", selectedVideoId);
-            currentVideoIndex = (currentVideoIndex + 1) % totalVideos; // Move para o próximo vídeo
-        }
-
-        loadNextVideo(); // Carrega o primeiro vídeo ao carregar a página
-    });
-</script>
+<div style="width: min(50rem, 100%); margin: auto;">
+		<div id="headline-container">
+			<div class="mobile-headline">
+				<img src="https://lh3.googleusercontent.com/pw/ABLVV867-yUoZVsVUHQRlLwQ7m5u3Ax0V_-YuwZHaaPpOgjnpznn0cC_UwuCaMkodAbhbu9vA4YKKM2DjXyfTKGsWb-hvgLY4_FnZjMCBXHkSpvzEH2QZA8Bigafqo-eUqyCGp5pnNVtJJIsAk3mxNwozgln=w516-h150-s-no-gm?authuser=0" style="width: 70vh;" alt="mobile">
+			</div>
+			<div class="desktop-headline">
+				<img src="https://lh3.googleusercontent.com/pw/ABLVV87MrHFUoqzbYqaVUXhJnFHSURo0KIWSC_xqbdUbBtLFF1Htli1F16yIgWLKuQhU0uPQty6SDYhzeKTvzmLM2i_rrynnUT5rttZXhKMtgWEZP4QQTYHMmcSgYCN8URHtT2KTjn3QlUY5befk7nYbz-Xo=w1400-h300-s-no-gm?authuser=0" style="max-width: 960px;" alt="desktop">
+			</div>
+		</div>
+		<div id="video-container" style="position: relative;"></div>
+		
+		<style>
+			.mobile-headline {
+				display: none;
+			}
+		
+			.desktop-headline {
+				display: none;
+			}
+		
+			@media (max-width: 767px) {
+				.desktop-headline {
+					display: none;
+				}
+				.mobile-headline {
+					display: block;
+				}
+			}
+		
+			@media (min-width: 768px) {
+				.mobile-headline {
+					display: none;
+				}
+				.desktop-headline {
+					display: block;
+				}
+			}
+		
+			#headline-container {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				text-align: center;
+			}
+		
+			#headline-container img {
+				max-width: 100%;
+				height: auto;
+				margin: 0 auto;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				var videoIds = [
+					"65cbabef67f1f60008a496a0", // Vídeo A
+					"65cbac012b58ec000879b445", // Vídeo B
+					"ID_do_video_C" // Vídeo C (substitua pelo ID correto)
+				];
+		
+				var totalVideos = videoIds.length;
+				var currentVideoIndex = Math.floor(Math.random() * totalVideos); // Seleciona um vídeo aleatório para começar
+		
+				function loadNextVideo() {
+					var selectedVideoId = videoIds[currentVideoIndex];
+		
+					if (selectedVideoId === "ID_do_video_C") {
+						var container = document.getElementById("video-container");
+						container.innerHTML = '<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/35ff6r4eoc?seo=true&videoFoam=true" title="Seqüência 01 Video" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" msallowfullscreen width="100%" height="100%"></iframe></div></div>';
+		
+						// Mostrar apenas a headline correspondente ao dispositivo
+						if (window.innerWidth < 768) {
+							document.querySelector(".mobile-headline").style.display = "block";
+							document.querySelector(".desktop-headline").style.display = "none";
+						} else {
+							document.querySelector(".mobile-headline").style.display = "none";
+							document.querySelector(".desktop-headline").style.display = "block";
+						}
+		
+						// Adicionar margem superior ao vídeo container apenas para o vídeo C
+						container.style.marginTop = window.innerWidth < 768 ? "140px" : "240px";
+		
+						// Adicionar parâmetros aos botões CTA para o vídeo C
+						var queryString = window.location.search.replace("utm_source=FB", "") + "&utm_source=Wistia";
+						var buttonLinks = document.querySelectorAll(".button1");
+						buttonLinks.forEach((buttonLink) => {
+							if (!buttonLink.href.includes("VturbA") && !buttonLink.href.includes("VTurbB") && !buttonLink.href.includes("Wistia")) {
+								buttonLink.href += queryString;
+								console.log("Href do botão CTA após adicionar os parâmetros:", buttonLink.href);
+							}
+						});
+					} else {
+						var embedScript = document.createElement("script");
+						embedScript.type = "text/javascript";
+						embedScript.id = "scr_" + selectedVideoId;
+						embedScript.src = "https://scripts.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/" + selectedVideoId + "/player.js";
+						embedScript.async = true;
+						document.getElementById("video-container").appendChild(embedScript);
+		
+						// Esconder headlines para vídeos A e B
+						document.querySelector(".mobile-headline").style.display = "none";
+						document.querySelector(".desktop-headline").style.display = "none";
+		
+						// Adicionar parâmetros aos botões CTA para todos os vídeos
+						var queryString = window.location.search.replace("utm_source=FB", "");
+						var param;
+						if (selectedVideoId === "65cbabef67f1f60008a496a0") { // Se o vídeo selecionado for o Vídeo A
+							param = "VturbA";
+						} else if (selectedVideoId === "65cbac012b58ec000879b445") { // Se o vídeo selecionado for o Vídeo B
+							param = "VTurbB";
+						} else { // Se for qualquer outro vídeo (Vídeo C)
+							param = "Wistia";
+						}
+						if (param) {
+							queryString += "&utm_source=" + param;
+							var buttonLinks = document.querySelectorAll(".button1");
+							buttonLinks.forEach((buttonLink) => {
+								if (!buttonLink.href.includes(param)) {
+									buttonLink.href += queryString;
+									console.log("Href do botão CTA após adicionar os parâmetros:", buttonLink.href);
+								}
+							});
+						}
+					}
+		
+					console.log("Vídeo selecionado:", selectedVideoId);
+					currentVideoIndex = (currentVideoIndex + 1) % totalVideos; // Move para o próximo vídeo
+				}
+		
+				loadNextVideo(); // Carrega o primeiro vídeo ao carregar a página
+			});
+		</script>
+		
 
 
 
