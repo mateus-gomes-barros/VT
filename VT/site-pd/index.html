@@ -12,17 +12,23 @@
   
       <div class="video-wrapper" style="margin: auto; width:auto;">
 <div style="width: min(50rem, 100%); margin: auto;">
-		<div id="headline-container">
-			<div class="mobile-headline">
-				<img src="https://lh3.googleusercontent.com/pw/ABLVV867-yUoZVsVUHQRlLwQ7m5u3Ax0V_-YuwZHaaPpOgjnpznn0cC_UwuCaMkodAbhbu9vA4YKKM2DjXyfTKGsWb-hvgLY4_FnZjMCBXHkSpvzEH2QZA8Bigafqo-eUqyCGp5pnNVtJJIsAk3mxNwozgln=w516-h150-s-no-gm?authuser=0" style="width: 70vh;" alt="mobile">
+		<div class="container-border">
+			<div id="headline-container">
+				<div class="mobile-headline">
+					<img src="https://lh3.googleusercontent.com/pw/ABLVV867-yUoZVsVUHQRlLwQ7m5u3Ax0V_-YuwZHaaPpOgjnpznn0cC_UwuCaMkodAbhbu9vA4YKKM2DjXyfTKGsWb-hvgLY4_FnZjMCBXHkSpvzEH2QZA8Bigafqo-eUqyCGp5pnNVtJJIsAk3mxNwozgln=w516-h150-s-no-gm?authuser=0" style="width: 70vh;" alt="mobile">
+				</div>
+				<div class="desktop-headline">
+					<img src="https://lh3.googleusercontent.com/pw/ABLVV87MrHFUoqzbYqaVUXhJnFHSURo0KIWSC_xqbdUbBtLFF1Htli1F16yIgWLKuQhU0uPQty6SDYhzeKTvzmLM2i_rrynnUT5rttZXhKMtgWEZP4QQTYHMmcSgYCN8URHtT2KTjn3QlUY5befk7nYbz-Xo=w1400-h300-s-no-gm?authuser=0"  alt="desktop">
+				</div>
 			</div>
-			<div class="desktop-headline">
-				<img src="https://lh3.googleusercontent.com/pw/ABLVV87MrHFUoqzbYqaVUXhJnFHSURo0KIWSC_xqbdUbBtLFF1Htli1F16yIgWLKuQhU0uPQty6SDYhzeKTvzmLM2i_rrynnUT5rttZXhKMtgWEZP4QQTYHMmcSgYCN8URHtT2KTjn3QlUY5befk7nYbz-Xo=w1400-h300-s-no-gm?authuser=0" style="max-width: 968px;" alt="desktop">
-			</div>
+			<div id="video-container" style="position: relative;"></div>
 		</div>
-		<div id="video-container" style="position: relative;"></div>
 		
 		<style>
+			.container-border {
+				border: 1px solid rgba(0, 0, 0, 0);
+			}
+		
 			.mobile-headline {
 				display: none;
 			}
@@ -50,10 +56,6 @@
 			}
 		
 			#headline-container {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
 				text-align: center;
 			}
 		
@@ -92,7 +94,7 @@
 							document.querySelector(".desktop-headline").style.display = "block";
 						}
 						// Adicionar margem superior ao vídeo container apenas para o vídeo C
-						container.style.marginTop = window.innerWidth < 768 ? "140px" : "240px";
+						container.style.marginTop = window.innerWidth < 768 ? "140px" : "40px";
 						// Adicionar parâmetros aos botões CTA para o vídeo C
 						var queryString = window.location.search.replace("utm_source=FB", "") + "&utm_source=Wistia";
 						var buttonLinks = document.querySelectorAll(".button1");
