@@ -39,26 +39,23 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             function getRandomPlayer() {
-                const wistiaPlayers = [];
-
                 const players = [
                     "65cc100244252100082cc18c" // VTurb Version C - With background
                 ];
 
                 const player_id = players[Math.floor(Math.random() * players.length)];
-                const isWistia = wistiaPlayers.includes(player_id);
-
-                return { player_id, isWistia };
+                return { player_id };
             }
 
             function changeUTMSource(value = "") {
                 const links = document.querySelectorAll("a");
 
                 links.forEach((buttonLink) => {
-                    if (!buttonLink.search.includes("vturbC") && !buttonLink.search.includes("vturbB") && !buttonLink.search.includes("wistia")) {
+                    if (!buttonLink.search.includes("vturbC") && !buttonLink.search.includes("wistia")) {
                         const buttonParams = new URLSearchParams(buttonLink.search);
 
                         buttonParams.set("teste_vturb", value);
+                        buttonParams.set("vturbC", value); // Incluindo o parâmetro para o vídeo C (VTurb Version C)
                         buttonLink.search = buttonParams.toString();
                     }
                 });
@@ -85,60 +82,21 @@
                 container.appendChild(embedDiv);
                 container.appendChild(script);
 
-                const name = "vturbC";
-
-                changeUTMSource(name);
+                changeUTMSource("vturbC");
             }
 
-            function loadPlayer(player_id = "", isWistia = false) {
+            function loadPlayer(player_id = "") {
                 const container = document.getElementById("vt-custom-abtest-container");
 
                 return loadVTurbPlayer(container, player_id);
             }
 
-            async function getVturbInstanceBy(player_id = "") {
-                return new Promise((resolve) => {
-                    const interval = setInterval(() => {
-                        if (!window.smartplayer || !window.smartplayer.instances || !window.smartplayer.instances.length) return;
+            const { player_id } = getRandomPlayer();
 
-                        const player = window.smartplayer.instances.find((instance) => instance.options.id === player_id);
+            loadPlayer(player_id);
 
-                        if (!player) return;
+            console.log(`Player ID: ${player_id}`);
 
-                        clearInterval(interval);
-
-                        resolve(player);
-                    }, 100);
-                });
-            }
-
-            const toggleOverlay = (player_id = "", show = false) => {
-                const overlay = document.querySelector(".vt-custom-pause-overlay");
-
-                if (!overlay) return;
-
-                overlay.setAttribute("data-visible", show.toString());
-            }
-
-            async function vturbPauseOverlay(player_id = "") {
-                const player = await getVturbInstanceBy(player_id);
-                const overlay = document.querySelector(".vt-custom-pause-overlay");
-
-                player.on("pause", () => toggleOverlay(player_id, true));
-                player.on("play", () => toggleOverlay(player_id, false));
-
-                if (overlay) {
-                    overlay.addEventListener("click", () => player.play());
-                }
-            }
-
-            const { player_id, isWistia } = getRandomPlayer();
-
-            loadPlayer(player_id, isWistia);
-
-            console.log(`Player ID: ${player_id} - Is Wistia: ${isWistia}`);
-
-            vturbPauseOverlay(player_id);
         });
 
     </script>
@@ -215,51 +173,6 @@
     </style>
 </div>
 
-
-   
-</div>
-
-
-<style>
-	.button1 {
-		font-family: sans-serif;
-		background: #6ad414;
-		text-align:center;
-		border: none;
-		color: white;
-		text-decoration: none;
-		display: flex;
-		justify-content:center;
-	   
-		margin: auto;
-		align-items:center;
-		flex-direction:column;
-		padding: 15px;
-		max-width:390px;
-		border-radius: 29px;
-		position: relative;
-		font-weight: 700;
-	}
-	.botao{
-	margin-top: 50px;
-	}
-	.botao:hover label{
-	 opacity:1;
-	color:white;
-	}
-	.button1:hover {
-	  background-color: #1565C0;
-	  color: white;
-	}
-	</style>
-	
-	<div class="botao">
-	<a  class="button1"href="https://pay.kiwify.com.br/VqMyJZB?s2" title="Quero fazer 6 Dígitos sem Anúncios"  target="_blank" 
-	>
-		<label style="font-size: 20px;">Começar Teste de 30 Dias Agora</label>
-	   
-	</a>
-	</div>
       </div>
 
   
