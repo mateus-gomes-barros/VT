@@ -14,227 +14,198 @@
 <div style="width: min(50rem, 100%); margin: auto;">
 		
 <div class="bordavideo">
-	<div class="vt-headline-container">
-		<img
-			class="mobile-headline"
-			src="https://lh3.googleusercontent.com/pw/ABLVV867-yUoZVsVUHQRlLwQ7m5u3Ax0V_-YuwZHaaPpOgjnpznn0cC_UwuCaMkodAbhbu9vA4YKKM2DjXyfTKGsWb-hvgLY4_FnZjMCBXHkSpvzEH2QZA8Bigafqo-eUqyCGp5pnNVtJJIsAk3mxNwozgln=w516-h150-s-no-gm?authuser=0"
-			alt="Especialista Revela 'Bactéria Diabética' Que Está Causando Picos Mortais de Glicose Em Milhões de Brasileiros! (Saiba Mais Abaixo)"
-		>
+    <div class="vt-headline-container">
+        <img
+            class="mobile-headline"
+            src="https://lh3.googleusercontent.com/pw/ABLVV867-yUoZVsVUHQRlLwQ7m5u3Ax0V_-YuwZHaaPpOgjnpznn0cC_UwuCaMkodAbhbu9vA4YKKM2DjXyfTKGsWb-hvgLY4_FnZjMCBXHkSpvzEH2QZA8Bigafqo-eUqyCGp5pnNVtJJIsAk3mxNwozgln=w516-h150-s-no-gm?authuser=0"
+            alt="Especialista Revela 'Bactéria Diabética' Que Está Causando Picos Mortais de Glicose Em Milhões de Brasileiros! (Saiba Mais Abaixo)"
+        >
 
-		<img
-			class="desktop-headline"
-			src="https://lh3.googleusercontent.com/pw/ABLVV87MrHFUoqzbYqaVUXhJnFHSURo0KIWSC_xqbdUbBtLFF1Htli1F16yIgWLKuQhU0uPQty6SDYhzeKTvzmLM2i_rrynnUT5rttZXhKMtgWEZP4QQTYHMmcSgYCN8URHtT2KTjn3QlUY5befk7nYbz-Xo=w1400-h300-s-no-gm?authuser=0"
-			alt="Especialista Revela 'Bactéria Diabética' Que Está Causando Picos Mortais de Glicose Em Milhões de Brasileiros! (Saiba Mais Abaixo)"
-		>
-	</div>
+        <img
+            class="desktop-headline"
+            src="https://lh3.googleusercontent.com/pw/ABLVV87MrHFUoqzbYqaVUXhJnFHSURo0KIWSC_xqbdUbBtLFF1Htli1F16yIgWLKuQhU0uPQty6SDYhzeKTvzmLM2i_rrynnUT5rttZXhKMtgWEZP4QQTYHMmcSgYCN8URHtT2KTjn3QlUY5befk7nYbz-Xo=w1400-h300-s-no-gm?authuser=0"
+            alt="Especialista Revela 'Bactéria Diabética' Que Está Causando Picos Mortais de Glicose Em Milhões de Brasileiros! (Saiba Mais Abaixo)"
+        >
+    </div>
 
-	<div id="vt-custom-abtest-container">
-		<div class="vt-custom-pause-overlay" data-visible="false">
-			<img
-				src="https://cdn.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/2022/12/26/63a9aa4cd13d520009d39814.jpg"
-				alt="Clique para assistir"
-			>
-		</div>
-	</div>
+    <div id="vt-custom-abtest-container">
+        <div class="vt-custom-pause-overlay" data-visible="false">
+            <img
+                src="https://cdn.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/2022/12/26/63a9aa4cd13d520009d39814.jpg"
+                alt="Clique para assistir"
+            >
+        </div>
+    </div>
 
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			function getRandomPlayer() {
-				const wistiaPlayers = [
-					"a9753zif3b", // Wistia Version A
-				];
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function getRandomPlayer() {
+                const players = [
+                    "65cc0feb44252100082cc183", // VTurb Version B - Without background
+                ];
 
-				const player_id = wistiaPlayers[Math.floor(Math.random() * wistiaPlayers.length)];
-				const isWistia = wistiaPlayers.includes(player_id);
+                const player_id = players[Math.floor(Math.random() * players.length)];
+                const isWistia = false;
 
-				return { player_id, isWistia };
-			}
+                return { player_id, isWistia };
+            }
 
-			function changeUTMSource(value = "") {
-				const links = document.querySelectorAll("a");
+            function changeUTMSource(value = "") {
+                const links = document.querySelectorAll("a");
 
-				links.forEach((buttonLink) => {
-					if (!buttonLink.search.includes("wistia")) {
-						const buttonParams = new URLSearchParams(buttonLink.search);
+                links.forEach((buttonLink) => {
+                    if (!buttonLink.search.includes("vturbB")) {
+                        const buttonParams = new URLSearchParams(buttonLink.search);
 
-						buttonParams.set("teste_vturb", value);
-						buttonLink.search = buttonParams.toString();
-					}
-				});
-			}
+                        buttonParams.set("teste_vturb", value);
+                        buttonLink.search = buttonParams.toString();
+                    }
+                });
+            }
 
-			function loadWistiaPlayer(container, wistia_id = "") {
-				if (!container || !wistia_id) return;
+            function loadVTurbPlayer(container, player_id = "") {
+                if (!container || !player_id) return;
 
-				const script1 = document.createElement('script');
-				script1.src = `https://fast.wistia.com/embed/medias/${wistia_id}.jsonp`;
-				script1.async = true;
+                const embedDiv = document.createElement("div");
+                embedDiv.id = `vid_${player_id}`;
+                embedDiv.style = "position:relative;width:100%;padding: 56.25% 0 0;";
+                embedDiv.innerHTML = `
+        <img id="thumb_${player_id}" src="https://images.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/${player_id}/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
+        
+        <div id="backdrop_${player_id}" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div>
+      `;
 
-				const script2 = document.createElement('script');
-				script2.src = "https://fast.wistia.com/assets/external/E-v1.js";
-				script2.async = true;
+                const script = document.createElement("script");
+                script.type = "text/javascript";
+                script.id = `scr_${player_id}`;
+                script.src = `https://scripts.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/${player_id}/player.js`;
+                script.async = true;
 
-				const divEmbed = document.createElement('div');
-				divEmbed.classList.add('wistia_embed', `wistia_async_${wistia_id}`);
-				divEmbed.setAttribute('data-videoFoam', 'true');
-				divEmbed.style.height = '100%';
-				divEmbed.style.position = 'relative';
-				divEmbed.style.width = '100%';
+                container.appendChild(embedDiv);
+                container.appendChild(script);
 
-				const divInnerWrapper = document.createElement('div');
-				divInnerWrapper.classList.add('wistia_responsive_wrapper');
-				divInnerWrapper.style.height = '100%';
-				divInnerWrapper.style.left = '0';
-				divInnerWrapper.style.position = 'absolute';
-				divInnerWrapper.style.top = '0';
-				divInnerWrapper.style.width = '100%';
-				divInnerWrapper.appendChild(divEmbed);
+                const name = "vturbB";
 
-				const divWrapper = document.createElement('div');
-				divWrapper.classList.add('wistia_responsive_padding');
-				divWrapper.style.padding = '56.25% 0 0 0';
-				divWrapper.style.position = 'relative';
-				divWrapper.appendChild(divInnerWrapper);
+                changeUTMSource(name);
+            }
 
-				container.appendChild(script1);
-				container.appendChild(script2);
-				container.appendChild(divWrapper);
+            function loadPlayer(player_id = "", isWistia = false) {
+                const container = document.getElementById("vt-custom-abtest-container");
 
-				changeUTMSource("wistia");
-			}
+                return loadVTurbPlayer(container, player_id);
+            }
 
-			function loadPlayer(player_id = "", isWistia = false) {
-				const container = document.getElementById("vt-custom-abtest-container");
+            async function getVturbInstanceBy(player_id = "") {
+                return new Promise((resolve) => {
+                    const interval = setInterval(() => {
+                        if (!window.smartplayer || !window.smartplayer.instances || !window.smartplayer.instances.length) return;
 
-				if (isWistia) return loadWistiaPlayer(container, player_id);
-			}
+                        const player = window.smartplayer.instances.find((instance) => instance.options.id === player_id);
 
-			async function getWistiaInstanceBy(player_id = "") {
-				return new Promise((resolve) => {
-					const interval = setInterval(() => {
-						if (!window.Wistia || !window.Wistia.api) return;
+                        if (!player) return;
 
-						const player = window.Wistia.api(player_id)
+                        clearInterval(interval);
 
-						if (!player) return;
+                        resolve(player);
+                    }, 100);
+                });
+            }
 
-						clearInterval(interval);
+            const toggleOverlay = (player_id = "", show = false) => {
+                const overlay = document.querySelector(".vt-custom-pause-overlay");
 
-						resolve(player);
-					}, 100);
-				});
-			}
+                if (!overlay) return;
 
-			const toggleOverlay = (player_id = "", show = false) => {
-				const overlay = document.querySelector(".vt-custom-pause-overlay");
+                overlay.setAttribute("data-visible", show.toString());
+            }
 
-				if (!overlay) return;
+            async function vturbPauseOverlay(player_id = "") {
+                const player = await getVturbInstanceBy(player_id);
+                const overlay = document.querySelector(".vt-custom-pause-overlay");
 
-				overlay.setAttribute("data-visible", show.toString());
-			}
+                player.on("pause", () => toggleOverlay(player_id, true));
+                player.on("play", () => toggleOverlay(player_id, false));
 
-			async function wistiaPauseOverlay(player_id = "") {
-				const player = await getWistiaInstanceBy(player_id);
-				const overlay = document.querySelector(".vt-custom-pause-overlay");
+                if (overlay) {
+                    overlay.addEventListener("click", () => player.play());
+                }
+            }
 
-				player.bind("pause", () => toggleOverlay(player_id, true));
-				player.bind("play", () => {
-					toggleOverlay(player_id, false);
+            const { player_id, isWistia } = getRandomPlayer();
 
-					const video = player.elem();
+            loadPlayer(player_id, isWistia);
 
-					if (video && video.muted) video.muted = false;
-				});
+            console.log(`Player ID: ${player_id} - Is Wistia: ${isWistia}`);
 
-				if (overlay) {
-					overlay.addEventListener("click", () => player.play());
-				}
-			}
+            vturbPauseOverlay(player_id);
+        });
 
-			const { player_id, isWistia } = getRandomPlayer();
+    </script>
 
-			loadPlayer(player_id, isWistia);
+    <style>
+        #vt-custom-abtest-container {
+            position: relative;
+        }
 
-			console.log(`Player ID: ${player_id} - Is Wistia: ${isWistia}`);
+        #vt-custom-abtest-container > .vt-custom-pause-overlay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-			if (isWistia) wistiaPauseOverlay(player_id);
-		});
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            cursor: pointer;
+            z-index: 2;
+            user-select: none;
+        }
 
-	</script>
+        #vt-custom-abtest-container > .vt-custom-pause-overlay[data-visible="false"] {
+            display: none;
+        }
 
-	<style>
-		#vt-custom-abtest-container {
-			position: relative;
-		}
+        #vt-custom-abtest-container > .vt-custom-pause-overlay img {
+            width: 45%;
+            -webkit-user-drag: none;
+        }
 
-		#vt-custom-abtest-container > .vt-custom-pause-overlay {
-			display: flex;
-			justify-content: center;
-			align-items: center;
+        .desktop-headline {
+            display: none;
+        }
 
-			position: absolute;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			cursor: pointer;
-			z-index: 2;
-			user-select: none;
-		}
+        .mobile-headline {
+            display: block;
+        }
 
-		#vt-custom-abtest-container > .vt-custom-pause-overlay[data-visible="false"] {
-			display: none;
-		}
+        .desktop-headline,
+        .mobile-headline {
+            width: 100%;
+            height: auto;
+        }
 
-		#vt-custom-abtest-container > .vt-custom-pause-overlay img {
-			width: 45%;
-			-webkit-user-drag: none;
-		}
+        #smartplayer .smartplayer-bezel,
+        #smartplayer .smartplayer-icons {
+            display: none !important;
+        }
 
-		.desktop-headline {
-			display: none;
-		}
+        #smartplayer .smartplayer-autoplay-img-element {
+            scale: 1 !important;
+        }
 
-		.mobile-headline {
-			display: block;
-		}
+        @media (min-width: 768px) {
+            .desktop-headline {
+                display: block;
+            }
 
-		.desktop-headline,
-		.mobile-headline {
-			width: 100%;
-			height: auto;
-		}
-
-		.wistia_embed .click-for-sound-btn {
-			display: none !important;
-		}
-
-		.wistia_embed .w-vulcan-overlays-table.w-css-reset .w-vulcan-overlays--center {
-			display: none !important;
-		}
-
-		#smartplayer .smartplayer-bezel,
-		#smartplayer .smartplayer-icons {
-			display: none !important;
-		}
-
-		#smartplayer .smartplayer-autoplay-img-element {
-			scale: 1 !important;
-		}
-
-		@media (min-width: 768px) {
-			.desktop-headline {
-				display: block;
-			}
-
-			.mobile-headline {
-				display: none;
-			}
-		}
-	</style>
+            .mobile-headline {
+                display: none;
+            }
+        }
+    </style>
 </div>
 
-</div>
 
 <style>
 	.button1 {
