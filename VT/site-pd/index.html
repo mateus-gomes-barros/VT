@@ -40,12 +40,14 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             function getRandomPlayer() {
+                const wistiaPlayers = [];
+
                 const players = [
-                    "65cc0feb44252100082cc183", // VTurb Version B - Without background
+                    "65cc100244252100082cc18c" // VTurb Version C - With background
                 ];
 
                 const player_id = players[Math.floor(Math.random() * players.length)];
-                const isWistia = false;
+                const isWistia = wistiaPlayers.includes(player_id);
 
                 return { player_id, isWistia };
             }
@@ -54,7 +56,7 @@
                 const links = document.querySelectorAll("a");
 
                 links.forEach((buttonLink) => {
-                    if (!buttonLink.search.includes("vturbB")) {
+                    if (!buttonLink.search.includes("vturbC") && !buttonLink.search.includes("vturbB") && !buttonLink.search.includes("wistia")) {
                         const buttonParams = new URLSearchParams(buttonLink.search);
 
                         buttonParams.set("teste_vturb", value);
@@ -70,10 +72,10 @@
                 embedDiv.id = `vid_${player_id}`;
                 embedDiv.style = "position:relative;width:100%;padding: 56.25% 0 0;";
                 embedDiv.innerHTML = `
-        <img id="thumb_${player_id}" src="https://images.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/${player_id}/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
-        
-        <div id="backdrop_${player_id}" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div>
-      `;
+    <img id="thumb_${player_id}" src="https://images.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/players/${player_id}/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
+    
+    <div id="backdrop_${player_id}" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div>
+  `;
 
                 const script = document.createElement("script");
                 script.type = "text/javascript";
@@ -84,7 +86,7 @@
                 container.appendChild(embedDiv);
                 container.appendChild(script);
 
-                const name = "vturbB";
+                const name = "vturbC";
 
                 changeUTMSource(name);
             }
@@ -183,6 +185,14 @@
         .mobile-headline {
             width: 100%;
             height: auto;
+        }
+
+        .wistia_embed .click-for-sound-btn {
+            display: none !important;
+        }
+
+        .wistia_embed .w-vulcan-overlays-table.w-css-reset .w-vulcan-overlays--center {
+            display: none !important;
         }
 
         #smartplayer .smartplayer-bezel,
