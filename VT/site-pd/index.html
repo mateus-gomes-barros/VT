@@ -12,7 +12,224 @@
   
       <div class="video-wrapper" style="margin: auto; width:auto;">
 <div style="width: min(50rem, 100%); margin: auto;">
-<div id="vid_65abc560462e65000939a120" style="position:relative;width:100%;padding: 56.25% 0 0;"><img id="thumb_65abc560462e65000939a120" src="https://images.converteai.net/731b1a17-a0f6-4521-b6f8-c62453dc0b90/players/65abc560462e65000939a120/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"><div id="backdrop_65abc560462e65000939a120" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div></div><script type="text/javascript" id="scr_65abc560462e65000939a120">var s=document.createElement("script");s.src="https://scripts.converteai.net/731b1a17-a0f6-4521-b6f8-c62453dc0b90/players/65abc560462e65000939a120/player.js",s.async=!0,document.head.appendChild(s);</script>
+<div class="bordavideo">
+	<div class="vt-headline-container">
+		<img
+			class="mobile-headline"
+			src="https://lh3.googleusercontent.com/pw/ABLVV867-yUoZVsVUHQRlLwQ7m5u3Ax0V_-YuwZHaaPpOgjnpznn0cC_UwuCaMkodAbhbu9vA4YKKM2DjXyfTKGsWb-hvgLY4_FnZjMCBXHkSpvzEH2QZA8Bigafqo-eUqyCGp5pnNVtJJIsAk3mxNwozgln=w516-h150-s-no-gm?authuser=0"
+			alt="Especialista Revela 'Bactéria Diabética' Que Está Causando Picos Mortais de Glicose Em Milhões de Brasileiros! (Saiba Mais Abaixo)"
+		>
+
+		<img
+			class="desktop-headline"
+			src="https://lh3.googleusercontent.com/pw/ABLVV87MrHFUoqzbYqaVUXhJnFHSURo0KIWSC_xqbdUbBtLFF1Htli1F16yIgWLKuQhU0uPQty6SDYhzeKTvzmLM2i_rrynnUT5rttZXhKMtgWEZP4QQTYHMmcSgYCN8URHtT2KTjn3QlUY5befk7nYbz-Xo=w1400-h300-s-no-gm?authuser=0"
+			alt="Especialista Revela 'Bactéria Diabética' Que Está Causando Picos Mortais de Glicose Em Milhões de Brasileiros! (Saiba Mais Abaixo)"
+		>
+	</div>
+
+	<div id="vt-custom-abtest-container">
+		<div class="vt-custom-pause-overlay" data-visible="false">
+			<img
+				src="https://cdn.converteai.net/b5e8472d-3421-4675-a219-1ae1b636b21f/2022/12/26/63a9aa4cd13d520009d39814.jpg"
+				alt="Clique para assistir"
+			>
+		</div>
+	</div>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			function changeUTMSource(value = "") {
+				const links = document.querySelectorAll("a");
+
+				links.forEach((buttonLink) => {
+					if (!buttonLink.search.includes("wistia")) {
+						const buttonParams = new URLSearchParams(buttonLink.search);
+
+						buttonParams.set("teste_vturb", value);
+						buttonLink.search = buttonParams.toString();
+					}
+				});
+			}
+
+			function loadWistiaPlayer(container, wistia_id = "") {
+				if (!container || !wistia_id) return;
+
+				const script1 = document.createElement('script');
+				script1.src = `https://fast.wistia.com/embed/medias/${wistia_id}.jsonp`;
+				script1.async = true;
+
+				const script2 = document.createElement('script');
+				script2.src = "https://fast.wistia.com/assets/external/E-v1.js";
+				script2.async = true;
+
+				const divEmbed = document.createElement('div');
+				divEmbed.classList.add('wistia_embed', `wistia_async_${wistia_id}`);
+				divEmbed.setAttribute('data-videoFoam', 'true');
+				divEmbed.style.height = '100%';
+				divEmbed.style.position = 'relative';
+				divEmbed.style.width = '100%';
+
+				const divInnerWrapper = document.createElement('div');
+				divInnerWrapper.classList.add('wistia_responsive_wrapper');
+				divInnerWrapper.style.height = '100%';
+				divInnerWrapper.style.left = '0';
+				divInnerWrapper.style.position = 'absolute';
+				divInnerWrapper.style.top = '0';
+				divInnerWrapper.style.width = '100%';
+				divInnerWrapper.appendChild(divEmbed);
+
+				const divWrapper = document.createElement('div');
+				divWrapper.classList.add('wistia_responsive_padding');
+				divWrapper.style.padding = '56.25% 0 0 0';
+				divWrapper.style.position = 'relative';
+				divWrapper.appendChild(divInnerWrapper);
+
+				container.appendChild(script1);
+				container.appendChild(script2);
+				container.appendChild(divWrapper);
+
+				changeUTMSource("wistia");
+			}
+
+			async function getWistiaInstanceBy(player_id = "") {
+				return new Promise((resolve) => {
+					const interval = setInterval(() => {
+						if (!window.Wistia || !window.Wistia.api) return;
+
+						const player = window.Wistia.api(player_id)
+
+						if (!player) return;
+
+						clearInterval(interval);
+
+						resolve(player);
+					}, 100);
+				});
+			}
+
+			const toggleOverlay = (player_id = "", show = false) => {
+				const overlay = document.querySelector(".vt-custom-pause-overlay");
+
+				if (!overlay) return;
+
+				overlay.setAttribute("data-visible", show.toString());
+			}
+
+			async function wistiaPauseOverlay(player_id = "") {
+				const player = await getWistiaInstanceBy(player_id);
+				const overlay = document.querySelector(".vt-custom-pause-overlay");
+
+				player.bind("pause", () => toggleOverlay(player_id, true));
+				player.bind("play", () => {
+					toggleOverlay(player_id, false);
+
+					const video = player.elem();
+
+					if (video && video.muted) video.muted = false;
+				});
+
+				if (overlay) {
+					overlay.addEventListener("click", () => player.play());
+				}
+			}
+
+			async function wistiaDelayEvent(player_id = "", delay_in_seconds = 10, class_to_display = "") {
+				const elements = document.querySelectorAll(class_to_display);
+				const alreadyElementDisplayed = localStorage.getItem(`alreadyElsDisplayed-${player_id}`);
+
+				if (alreadyElementDisplayed === 'true') return elements.forEach((el) => el.style.display = "block");
+
+				const player = await getWistiaInstanceBy(player_id);
+
+				player.bind("crosstime", delay_in_seconds, function() {
+					elements.forEach((el) => el.style.display = "block");
+
+					localStorage.setItem(`alreadyElsDisplayed-${player_id}`, 'true');
+				});
+			}
+
+			const player_id = "a9753zif3b"
+			const container = document.getElementById("vt-custom-abtest-container");
+
+			loadWistiaPlayer(container, "a9753zif3b");
+			wistiaDelayEvent(player_id, 1921.2, ".show-on-call-action"); // DELAY IN 1921.2 SECONDS
+			wistiaPauseOverlay(player_id);
+		});
+
+	</script>
+
+	<style>
+		#vt-custom-abtest-container {
+			position: relative;
+		}
+
+		#vt-custom-abtest-container > .vt-custom-pause-overlay {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			cursor: pointer;
+			z-index: 2;
+			user-select: none;
+		}
+
+		#vt-custom-abtest-container > .vt-custom-pause-overlay[data-visible="false"] {
+			display: none;
+		}
+
+		#vt-custom-abtest-container > .vt-custom-pause-overlay img {
+			width: 45%;
+			-webkit-user-drag: none;
+		}
+
+		.desktop-headline {
+			display: none;
+		}
+
+		.mobile-headline {
+			display: block;
+		}
+
+		.desktop-headline,
+		.mobile-headline {
+			width: 100%;
+			height: auto;
+		}
+
+		.wistia_embed .click-for-sound-btn {
+			display: none !important;
+		}
+
+		.wistia_embed .w-vulcan-overlays-table.w-css-reset .w-vulcan-overlays--center {
+			display: none !important;
+		}
+
+		#smartplayer .smartplayer-bezel,
+		#smartplayer .smartplayer-icons {
+			display: none !important;
+		}
+
+		#smartplayer .smartplayer-autoplay-img-element {
+			scale: 1 !important;
+		}
+
+		@media (min-width: 768px) {
+			.desktop-headline {
+				display: block;
+			}
+
+			.mobile-headline {
+				display: none;
+			}
+		}
+	</style>
+</div>
+
 </div>
 
   <script>
@@ -24,5 +241,84 @@
     }
 </script>
 <script src='//cdn.clkmc.com/cmc.js'></script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        var CLASS_TO_DISPLAY = ".show-on-call-action";
+
+        var elsHidden = document.querySelectorAll(CLASS_TO_DISPLAY);
+        var elsHiddenArr = Array.prototype.slice.call(elsHidden);
+
+        var showEls = function () {
+            for (var i = 0; i < elsHiddenArr.length; i++) {
+                elsHiddenArr[i].style.display = "block";
+            }
+        }
+
+        var startWatchVideoProgress = function () {
+            if (typeof Wistia === 'undefined' || typeof Wistia.api === 'undefined') {
+                setTimeout(startWatchVideoProgress, 500);
+                return;
+            }
+
+            var video = Wistia.api('a9753zif3b');
+
+            video.bind('secondchange', function (s) {
+                var SECONDS_TO_DISPLAY = 10; // Altere para o número de segundos desejado
+                if (s < SECONDS_TO_DISPLAY) return;
+
+                showEls();
+                video.unbind('secondchange');
+            });
+        }
+
+        var alreadyElsDisplayed = localStorage.getItem('alreadyElsDisplayed');
+        if (alreadyElsDisplayed == 'true') {
+            showEls();
+        } else {
+            startWatchVideoProgress();
+        }
+    });
+</script>
+
+          <style>
+	.button1 {
+		font-family: sans-serif;
+		background: #6ad414;
+		text-align:center;
+		border: none;
+		color: white;
+		text-decoration: none;
+		display: flex;
+		justify-content:center;
+	   
+		margin: auto;
+		align-items:center;
+		flex-direction:column;
+		padding: 15px;
+		max-width:390px;
+		border-radius: 29px;
+		position: relative;
+		font-weight: 700;
+	}
+	.botao{
+	margin-top: 50px;
+	}
+	.botao:hover label{
+	 opacity:1;
+	color:white;
+	}
+	.button1:hover {
+	  background-color: #1565C0;
+	  color: white;
+	}
+	</style>
+	<div class="show-on-call-action">
+	<div class="botao">
+	<a  class="button1"href="https://pay.kiwify.com.br/VqMyJZB?s2" title="Quero fazer 6 Dígitos sem Anúncios"  target="_blank" 
+	>
+		<label style="font-size: 20px;">Começar Teste de 30 Dias Agora</label>
+	   
+	</a>
+	</div></div>
 </body>
 </html>
